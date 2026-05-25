@@ -1,4 +1,5 @@
 # streamark
+NOT READY, NOT READY
 
 Ultra-fast streaming markdown parser tuned for LLM chat output — handles partial/incomplete markdown without flickering.
 
