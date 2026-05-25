@@ -1,0 +1,72 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+credentials.*
+secrets.json
+secrets.*
+service-account*.json
+*.cookie
+
+# Node / Bun / TypeScript
+node_modules/
+dist/
+build/
+.next/
+.turbo/
+.vercel/
+.cache/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Rust
+target/
+
+# Go
+*.exe
+*.test
+*.out
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Local databases (data, not code)
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Misc
+.tmp/
+tmp/
+
+# Project-specific
+test-app/dist/
+test-app/node_modules/

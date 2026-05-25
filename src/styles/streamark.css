@@ -1,0 +1,551 @@
+/**
+ * Streamark Markdown Styles
+ *
+ * A clean, readable stylesheet for rendered markdown content.
+ * Supports both light and dark themes via CSS variables.
+ *
+ * Usage:
+ *   <link rel="stylesheet" href="streamark.css">
+ *   <div class="streamark">...rendered markdown...</div>
+ *
+ * Or import in JS:
+ *   import 'streamark/styles/streamark.css'
+ */
+
+/* ============================================================================
+   CSS Variables (Light Theme Default)
+   ============================================================================ */
+
+.streamark {
+  /* Colors */
+  --smd-text: #24292f;
+  --smd-text-secondary: #57606a;
+  --smd-text-tertiary: #6e7781;
+  --smd-bg: #ffffff;
+  --smd-bg-secondary: #f6f8fa;
+  --smd-bg-tertiary: #eef1f4;
+  --smd-border: #d0d7de;
+  --smd-border-heavy: #8c959f;
+
+  /* Accent colors */
+  --smd-link: #0969da;
+  --smd-link-hover: #0550ae;
+  --smd-code-bg: rgba(175, 184, 193, 0.2);
+  --smd-code-text: #24292f;
+  --smd-blockquote-border: #d0d7de;
+  --smd-blockquote-text: #57606a;
+  --smd-hr: #d8dee4;
+
+  /* Table colors */
+  --smd-table-border: #d0d7de;
+  --smd-table-header-bg: #f6f8fa;
+  --smd-table-row-alt: #f6f8fa;
+
+  /* Checkbox */
+  --smd-checkbox-bg: #ffffff;
+  --smd-checkbox-border: #d0d7de;
+  --smd-checkbox-checked: #0969da;
+
+  /* Typography */
+  --smd-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  --smd-font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  --smd-font-size: 16px;
+  --smd-line-height: 1.6;
+
+  /* Spacing */
+  --smd-spacing: 1em;
+  --smd-radius: 6px;
+}
+
+/* ============================================================================
+   Dark Theme
+   ============================================================================ */
+
+.streamark.dark,
+.streamark[data-theme="dark"],
+[data-theme="dark"] .streamark {
+  --smd-text: #e6edf3;
+  --smd-text-secondary: #8b949e;
+  --smd-text-tertiary: #6e7681;
+  --smd-bg: #0d1117;
+  --smd-bg-secondary: #161b22;
+  --smd-bg-tertiary: #21262d;
+  --smd-border: #30363d;
+  --smd-border-heavy: #484f58;
+
+  --smd-link: #58a6ff;
+  --smd-link-hover: #79c0ff;
+  --smd-code-bg: rgba(110, 118, 129, 0.4);
+  --smd-code-text: #e6edf3;
+  --smd-blockquote-border: #3b434b;
+  --smd-blockquote-text: #8b949e;
+  --smd-hr: #21262d;
+
+  --smd-table-border: #30363d;
+  --smd-table-header-bg: #161b22;
+  --smd-table-row-alt: #161b22;
+
+  --smd-checkbox-bg: #0d1117;
+  --smd-checkbox-border: #30363d;
+  --smd-checkbox-checked: #58a6ff;
+}
+
+/* ============================================================================
+   Base Styles
+   ============================================================================ */
+
+.streamark {
+  font-family: var(--smd-font-family);
+  font-size: var(--smd-font-size);
+  line-height: var(--smd-line-height);
+  color: var(--smd-text);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.streamark > *:first-child {
+  margin-top: 0 !important;
+}
+
+.streamark > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ============================================================================
+   Headings
+   ============================================================================ */
+
+.streamark h1,
+.streamark h2,
+.streamark h3,
+.streamark h4,
+.streamark h5,
+.streamark h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--smd-text);
+}
+
+.streamark h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--smd-border);
+}
+
+.streamark h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--smd-border);
+}
+
+.streamark h3 {
+  font-size: 1.25em;
+}
+
+.streamark h4 {
+  font-size: 1em;
+}
+
+.streamark h5 {
+  font-size: 0.875em;
+}
+
+.streamark h6 {
+  font-size: 0.85em;
+  color: var(--smd-text-secondary);
+}
+
+/* ============================================================================
+   Paragraphs & Text
+   ============================================================================ */
+
+.streamark p {
+  margin-top: 0;
+  margin-bottom: var(--smd-spacing);
+}
+
+.streamark strong,
+.streamark b {
+  font-weight: 600;
+}
+
+.streamark em,
+.streamark i {
+  font-style: italic;
+}
+
+.streamark del,
+.streamark s {
+  text-decoration: line-through;
+  color: var(--smd-text-secondary);
+}
+
+/* ============================================================================
+   Links
+   ============================================================================ */
+
+.streamark a {
+  color: var(--smd-link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.streamark a:hover {
+  color: var(--smd-link-hover);
+  text-decoration: underline;
+}
+
+.streamark a:focus {
+  outline: 2px solid var(--smd-link);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   Images
+   ============================================================================ */
+
+.streamark img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--smd-radius);
+  display: block;
+  margin: var(--smd-spacing) 0;
+}
+
+.streamark img[align="left"] {
+  float: left;
+  margin-right: var(--smd-spacing);
+}
+
+.streamark img[align="right"] {
+  float: right;
+  margin-left: var(--smd-spacing);
+}
+
+/* ============================================================================
+   Code (Inline)
+   ============================================================================ */
+
+.streamark code {
+  font-family: var(--smd-font-mono);
+  font-size: 0.875em;
+  padding: 0.2em 0.4em;
+  background: var(--smd-code-bg);
+  color: var(--smd-code-text);
+  border-radius: var(--smd-radius);
+  white-space: nowrap;
+}
+
+/* Don't style code inside pre */
+.streamark pre code {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  white-space: pre;
+  font-size: 1em;
+}
+
+/* ============================================================================
+   Code Blocks (Pre)
+   ============================================================================ */
+
+.streamark pre {
+  font-family: var(--smd-font-mono);
+  font-size: 0.875em;
+  line-height: 1.5;
+  padding: 1em;
+  margin: var(--smd-spacing) 0;
+  background: var(--smd-bg-secondary);
+  border: 1px solid var(--smd-border);
+  border-radius: var(--smd-radius);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.streamark pre code {
+  display: block;
+  color: var(--smd-text);
+}
+
+/* ============================================================================
+   Blockquotes
+   ============================================================================ */
+
+.streamark blockquote {
+  margin: var(--smd-spacing) 0;
+  padding: 0.5em 1em;
+  border-left: 4px solid var(--smd-blockquote-border);
+  color: var(--smd-blockquote-text);
+  background: var(--smd-bg-secondary);
+  border-radius: 0 var(--smd-radius) var(--smd-radius) 0;
+}
+
+.streamark blockquote > *:first-child {
+  margin-top: 0;
+}
+
+.streamark blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
+.streamark blockquote blockquote {
+  margin: 0.5em 0;
+}
+
+/* ============================================================================
+   Lists
+   ============================================================================ */
+
+.streamark ul,
+.streamark ol {
+  margin: var(--smd-spacing) 0;
+  padding-left: 2em;
+}
+
+.streamark ul {
+  list-style-type: disc;
+}
+
+.streamark ol {
+  list-style-type: decimal;
+}
+
+.streamark li {
+  margin: 0.25em 0;
+}
+
+.streamark li > p {
+  margin: 0.5em 0;
+}
+
+.streamark li > ul,
+.streamark li > ol {
+  margin: 0.25em 0;
+}
+
+/* Nested list styles */
+.streamark ul ul {
+  list-style-type: circle;
+}
+
+.streamark ul ul ul {
+  list-style-type: square;
+}
+
+/* ============================================================================
+   Task Lists (Checkboxes)
+   ============================================================================ */
+
+.streamark input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  accent-color: var(--smd-checkbox-checked);
+  cursor: default;
+}
+
+.streamark li:has(input[type="checkbox"]) {
+  list-style: none;
+  margin-left: -1.5em;
+}
+
+/* ============================================================================
+   Tables
+   ============================================================================ */
+
+.streamark table {
+  width: 100%;
+  margin: var(--smd-spacing) 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: auto;
+  display: block;
+}
+
+.streamark thead {
+  background: var(--smd-table-header-bg);
+}
+
+.streamark th,
+.streamark td {
+  padding: 0.75em 1em;
+  border: 1px solid var(--smd-table-border);
+  text-align: left;
+}
+
+.streamark th {
+  font-weight: 600;
+}
+
+.streamark tbody tr:nth-child(even) {
+  background: var(--smd-table-row-alt);
+}
+
+/* Table alignment */
+.streamark th[style*="text-align:center"],
+.streamark td[style*="text-align:center"] {
+  text-align: center;
+}
+
+.streamark th[style*="text-align:right"],
+.streamark td[style*="text-align:right"] {
+  text-align: right;
+}
+
+/* ============================================================================
+   Horizontal Rule
+   ============================================================================ */
+
+.streamark hr {
+  height: 2px;
+  margin: 1.5em 0;
+  padding: 0;
+  background: var(--smd-hr);
+  border: none;
+}
+
+/* ============================================================================
+   Line Breaks
+   ============================================================================ */
+
+.streamark br {
+  display: block;
+  content: "";
+  margin-top: 0.5em;
+}
+
+/* ============================================================================
+   Selection
+   ============================================================================ */
+
+.streamark ::selection {
+  background: var(--smd-link);
+  color: white;
+}
+
+/* ============================================================================
+   Print Styles
+   ============================================================================ */
+
+@media print {
+  .streamark {
+    font-size: 12pt;
+    color: #000;
+  }
+
+  .streamark pre,
+  .streamark code {
+    background: #f5f5f5 !important;
+    border-color: #ddd !important;
+  }
+
+  .streamark a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .streamark a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* ============================================================================
+   Syntax Highlighting (Optional - Compatible with Prism/Highlight.js)
+   ============================================================================ */
+
+.streamark .token.comment,
+.streamark .token.prolog,
+.streamark .token.doctype,
+.streamark .token.cdata {
+  color: var(--smd-text-tertiary);
+}
+
+.streamark .token.punctuation {
+  color: var(--smd-text-secondary);
+}
+
+.streamark .token.property,
+.streamark .token.tag,
+.streamark .token.boolean,
+.streamark .token.number,
+.streamark .token.constant,
+.streamark .token.symbol,
+.streamark .token.deleted {
+  color: #cf222e;
+}
+
+.streamark .token.selector,
+.streamark .token.attr-name,
+.streamark .token.string,
+.streamark .token.char,
+.streamark .token.builtin,
+.streamark .token.inserted {
+  color: #116329;
+}
+
+.streamark .token.operator,
+.streamark .token.entity,
+.streamark .token.url,
+.streamark .language-css .token.string,
+.streamark .style .token.string {
+  color: #0550ae;
+}
+
+.streamark .token.atrule,
+.streamark .token.attr-value,
+.streamark .token.keyword {
+  color: #cf222e;
+}
+
+.streamark .token.function,
+.streamark .token.class-name {
+  color: #8250df;
+}
+
+.streamark .token.regex,
+.streamark .token.important,
+.streamark .token.variable {
+  color: #953800;
+}
+
+/* Dark theme syntax highlighting */
+.streamark.dark .token.property,
+.streamark.dark .token.tag,
+.streamark.dark .token.boolean,
+.streamark.dark .token.number,
+.streamark.dark .token.constant,
+.streamark.dark .token.symbol,
+.streamark.dark .token.deleted {
+  color: #ff7b72;
+}
+
+.streamark.dark .token.selector,
+.streamark.dark .token.attr-name,
+.streamark.dark .token.string,
+.streamark.dark .token.char,
+.streamark.dark .token.builtin,
+.streamark.dark .token.inserted {
+  color: #a5d6ff;
+}
+
+.streamark.dark .token.atrule,
+.streamark.dark .token.attr-value,
+.streamark.dark .token.keyword {
+  color: #ff7b72;
+}
+
+.streamark.dark .token.function,
+.streamark.dark .token.class-name {
+  color: #d2a8ff;
+}
+
+.streamark.dark .token.regex,
+.streamark.dark .token.important,
+.streamark.dark .token.variable {
+  color: #ffa657;
+}
